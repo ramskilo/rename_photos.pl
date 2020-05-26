@@ -1,7 +1,9 @@
 #!/bin/perl
 #Rename recovered .jpg files with creation date 
 #exiftool -h * |grep Creation may function with png files
-
+# https://www.cgsecurity.org/wiki/After_Using_PhotoRec#JPEG
+# Modified by Ramskilo
+#
 $working_dir = '.';
 $jhead_bin = '/usr/bin/jhead';
 @recovered_files = `ls $working_dir`;
@@ -14,7 +16,7 @@ foreach $file (@recovered_files) {
 		if ($line =~ m/Date\/Time    : / or $line =~ m/DateTimeDigitized = "/) {
 	#	if ($line =~ m/DateTimeDigitized = "/) {
 	 		print "line: $line";
-                	print "Trovato: $'";
+                	print "Found: $'";
 			$nome = $';
 			$nome =~ s/ /_/;
 			$nome =~ s/\n//;
